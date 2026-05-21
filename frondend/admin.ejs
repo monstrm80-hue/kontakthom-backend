@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { background:#111; color:white; font-family:Arial; padding:40px; }
+        h1 { color:#e30613; margin-bottom:30px; font-size:26px; }
+        .form-box {
+            background:#1e1e1e;
+            padding:30px;
+            border-radius:12px;
+            max-width:600px;
+        }
+        label { display:block; margin-bottom:6px; color:#aaa; font-size:14px; }
+        input, select {
+            width:100%;
+            padding:12px;
+            margin-bottom:16px;
+            background:#2a2a2a;
+            border:1px solid #333;
+            border-radius:8px;
+            color:white;
+            font-size:15px;
+        }
+        .checkbox-row {
+            display:flex;
+            align-items:center;
+            gap:10px;
+            margin-bottom:20px;
+        }
+        .checkbox-row input { width:auto; margin:0; }
+        button {
+            width:100%;
+            padding:14px;
+            background:#e30613;
+            color:white;
+            font-size:16px;
+            font-weight:bold;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+        }
+        button:hover { background:#c0000f; }
+        a { color:#aaa; text-decoration:none; display:inline-block; margin-bottom:20px; }
+        a:hover { color:white; }
+    </style>
+</head>
+<body>
+    <a href="/mehsullar">← Məhsullara qayıt</a>
+    <h1>⚙️ Admin Panel — Məhsul Əlavə Et</h1>
+
+    <div class="form-box">
+        <form action="/admin/mehsul-elave" method="POST" enctype="multipart/form-data">
+
+            <label>Məhsul adı *</label>
+            <input type="text" name="ad" placeholder="iPhone 15 Pro 128GB" required>
+
+            <label>Brend *</label>
+            <input type="text" name="brend" placeholder="Apple" required>
+
+            <label>Qiymət (AZN) *</label>
+            <input type="number" name="qiymet" placeholder="2499" required>
+
+            <label>Köhnə qiymət (AZN)</label>
+            <input type="number" name="eskiQiymet" placeholder="2699">
+
+            <label>Kateqoriya</label>
+            <select name="kateqoriya">
+                <option>Smartfonlar</option>
+                <option>Noutbuklar</option>
+                <option>Televizorlar</option>
+                <option>Meişət Texnikası</option>
+                <option>Smart Saatlar</option>
+                <option>Aksesuarlar</option>
+            </select>
+
+            <label>Kredit məlumatı</label>
+            <input type="text" name="kredit" placeholder="Faizsiz 12 ay: 208.25 AZN">
+
+            <label>Şəkil</label>
+            <input type="file" name="shekil" accept="image/*">
+
+            <div class="checkbox-row">
+                <input type="checkbox" name="populyar" id="pop">
+                <label for="pop" style="margin:0; color:white;">Populyar məhsul</label>
+            </div>
+
+            <button type="submit">➕ Məhsul Əlavə Et</button>
+        </form>
+    </div>
+</body>
+</html>
