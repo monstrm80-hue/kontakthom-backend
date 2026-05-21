@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kampaniyalar — Kontakt Home</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0b0b0c;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- MENYU (NAVBAR) --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: #0b0b0c;
+            border-bottom: 1px solid #1a1a1c;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff0022;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links li a {
+            font-size: 15px;
+            font-weight: 500;
+            color: #b3b3b3;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover, .nav-links li.active a {
+            color: #ff0022;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .icon-btn:hover {
+            color: #ff0022;
+        }
+
+        .cart-btn {
+            background-color: #ff0022;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .cart-btn:hover {
+            background-color: #cc001b;
+            transform: translateY(-2px);
+        }
+
+        /* --- SƏHİFƏ BAŞLIĞI --- */
+        .page-header {
+            text-align: center;
+            padding: 60px 20px 40px 20px;
+            background: linear-gradient(180deg, #111113 0%, #0b0b0c 100%);
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .page-header span {
+            color: #ff0022;
+        }
+
+        .page-header p {
+            color: #88888b;
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- ƏSAS KONTEYNER --- */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 4% 80px 4%;
+        }
+
+        /* --- KAMPANİYA GRID --- */
+        .campaigns-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        @media (max-width: 480px) {
+            .campaigns-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- KAMPANİYA KARTI --- */
+        .campaign-card {
+            background-color: #111113;
+            border: 1px solid #1a1a1c;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .campaign-card:hover {
+            transform: translateY(-8px);
+            border-color: #ff0022;
+            box-shadow: 0 15px 30px rgba(255, 0, 34, 0.15);
+        }
+
+        /* Kampaniya Şəkil Əvəzləyicisi (Banner) */
+        .campaign-banner-placeholder {
+            height: 220px;
+            background: linear-gradient(135deg, #1e1e22 0%, #0f0f11 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #1a1a1c;
+        }
+
+        /* Banner daxilində böyük faiz və ya vurğu yazısı */
+        .banner-highlight {
+            font-size: 48px;
+            font-weight: 800;
+            color: #ff0022;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            margin-bottom: 5px;
+            text-shadow: 0 0 20px rgba(255, 0, 34, 0.4);
+        }
+
+        .banner-subtext {
+            font-size: 14px;
+            color: #a0a0a5;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Kampaniya Status Nişanı */
+        .status-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #ff0022;
+            color: white;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 30px;
+            text-transform: uppercase;
+            box-shadow: 0 5px 10px rgba(255,0,34,0.3);
+        }
+
+        /* Taymer (Geri Sayım vizualı) */
+        .campaign-timer {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background-color: rgba(11, 11, 12, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid #2a2a2e;
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #ffcc00;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Kampaniya Məlumat Hissəsi */
+        .campaign-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .campaign-date {
+            font-size: 13px;
+            color: #666669;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .campaign-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .campaign-description {
+            font-size: 14px;
+            color: #a0a0a5;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* Ətraflı Düyməsi */
+        .detail-btn {
+            width: 100%;
+            background-color: transparent;
+            border: 1px solid #2a2a2e;
+            color: #ffffff;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .campaign-card:hover .detail-btn {
+            background-color: #ff0022;
+            border-color: #ff0022;
+            color: white;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #0b0b0c;
+            border-top: 1px solid #1a1a1c;
+            padding: 40px 8%;
+            text-align: center;
+            color: #555558;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="logo">Kontakt<span>Home</span></a>
+      <ul class="nav-links">
+    <li><a href="/">Ana Səhifə</a></li>
+    <li><a href="/mehsullar">Məhsullar</a></li>
+    <li><a href="/brendler">Brendlər</a></li>
+    <li><a href="/kampaniyalar">Kampaniyalar</a></li> 
+    <li><a href="/magazalar">Mağazalar</a></li>
+    <li><a href="/kreditler">Kredit</a></li>
+</ul>
+        <div class="nav-right">
+            <button class="icon-btn">🔍</button>
+            <button class="icon-btn">❤️</button>
+            <button class="cart-btn">Səbət (0)</button>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>Şok <span>Kampaniyalar</span></h1>
+        <p>Hər kəsə sərfəli şərtlərlə, böyük endirimlər, hədiyyəli və faizsiz təkliflərlə dolu cari kampaniyalarımızla tanış olun.</p>
+    </div>
+
+    <div class="container">
+        <div class="campaigns-grid">
+            
+            <div class="campaign-card">
+                <span class="status-badge">Aktiv</span>
+                <div class="campaign-banner-placeholder">
+                    <div class="banner-highlight">-50%-Ə QƏDƏR</div>
+                    <div class="banner-subtext">YAY ENDİRİMLƏRİ</div>
+                    <div class="campaign-timer">⏳ 4 gün qaldı</div>
+                </div>
+                <div class="campaign-content">
+                    <div>
+                        <div class="campaign-date">🗓 15 May - 31 May 2026</div>
+                        <h2 class="campaign-title">Seçilmiş Smartfon və Noutbuklara Nağd alışda şok endirim!</h2>
+                        <p class="campaign-description">Bütün dünya brendlərinin ən son model smartfonları və güclü noutbukları nağd və ya taksit kartları ilə alışda yarım qiymətinə!</p>
+                    </div>
+                    <a href="/mehsullar" class="detail-btn">Məhsullara Bax</a>
+                </div>
+            </div>
+
+            <div class="campaign-card">
+                <span class="status-badge" style="background-color: #ff9900;">0% KOMİSSİYA</span>
+                <div class="campaign-banner-placeholder">
+                    <div class="banner-highlight">18 AY FAIZSİZ</div>
+                    <div class="banner-subtext">MƏİŞƏT TEXNİKASI</div>
+                    <div class="campaign-timer">⏳ 12 gün qaldı</div>
+                </div>
+                <div class="campaign-content">
+                    <div>
+                        <div class="campaign-date">🗓 10 May - 10 İyun 2026</div>
+                        <h2 class="campaign-title">Böyük və kiçik məişət texnikası ilkin ödənişsiz, faizsiz!</h2>
+                        <p class="campaign-description">Evinizi yeniləməyin tam zamanı! Soyuducu, paltaryuyan və televizorlar indi 18 aylıq tam faizsiz və komissiyasız şərtlərlə qapınızda.</p>
+                    </div>
+                    <a href="/mehsullar" class="detail-btn">Məhsullara Bax</a>
+                </div>
+            </div>
+
+            <div class="campaign-card">
+                <span class="status-badge" style="background-color: #00cc66;">HƏDİYYƏLİ</span>
+                <div class="campaign-banner-placeholder">
+                    <div class="banner-highlight">1 ALANA 1 HƏDİYYƏ</div>
+                    <div class="banner-subtext">AKSESUAR KAMPANİYASI</div>
+                    <div class="campaign-timer">⏳ 2 gün qaldı</div>
+                </div>
+                <div class="campaign-content">
+                    <div>
+                        <div class="campaign-date">🗓 18 May - 25 May 2026</div>
+                        <h2 class="campaign-title">Smart saat alana orijinal qulaqlıq tamamilə HƏDİYYƏ!</h2>
+                        <p class="campaign-description">Kampaniya müddətində seçilmiş Apple Watch və ya Galaxy Watch modellərini alan hər kəsə premium qulaqlıqlar və ya adapterlər hədiyyə olunacaq.</p>
+                    </div>
+                    <a href="/mehsullar" class="detail-btn">Məhsullara Bax</a>
+                </div>
+            </div>
+
+            <div class="campaign-card">
+                <span class="status-badge">YENİ</span>
+                <div class="campaign-banner-placeholder">
+                    <div class="banner-highlight">0 AZN İLKİN ÖDƏNİŞ</div>
+                    <div class="banner-subtext">TƏLƏBƏ KAMPANİYASI</div>
+                    <div class="campaign-timer">⏳ 25 gün qaldı</div>
+                </div>
+                <div class="campaign-content">
+                    <div>
+                        <div class="campaign-date">🗓 20 May - 20 İyun 2026</div>
+                        <h2 class="campaign-title">Tələbə biletini təqdim et, noutbuku ilkin ödənişsiz apar!</h2>
+                        <p class="campaign-description">Təhsilinizə dəstək bizdən! Tələbələrə xüsusi olaraq bütün dərslik və proqramlaşdırma noutbukları 12 aylıq ilkin ödənişsiz və güzəştli qiymətlərlə verilir.</p>
+                    </div>
+                    <a href="/mehsullar" class="detail-btn">Məhsullara Bax</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Kontakt Home Tədris Layihəsi. Bütün hüquqlar qorunur.</p>
+    </footer>
+
+</body>
+</html>

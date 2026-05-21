@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt Home — Sevdiyiniz Elektronika</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        /* Ümumi Sıfırlama və Dark Mode */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-color: #0b0b0c;
+            color: #ffffff;
+        }
+
+        /* Naviqasiya Paneli (Navbar) */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: #111113;
+            border-bottom: 1px solid #1a1a1c;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .logo span {
+            color: #ff0022;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        .nav-links a {
+            color: #a0a0a5;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+        .nav-links a.active {
+            color: #ff0022;
+        }
+
+        /* Sağ tərəf: Səbət Düyməsi */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .cart-btn {
+            background-color: #ff0022;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+        .cart-btn:hover {
+            background-color: #cc001b;
+            transform: translateY(-1px);
+        }
+
+        /* Hero / Giriş Banner Hissəsi */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 8%;
+            gap: 40px;
+        }
+        .hero-left {
+            flex: 1;
+        }
+        .hero-tag {
+            background-color: #1a1a1c;
+            color: #ff0022;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+        .hero h1 span {
+            color: #ff0022;
+        }
+        .hero p {
+            color: #a0a0a5;
+            font-size: 16px;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+        }
+        .btn-red {
+            background-color: #ff0022;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        .btn-red:hover {
+            background-color: #cc001b;
+        }
+        .btn-ghost {
+            background-color: transparent;
+            color: white;
+            border: 1px solid #1a1a1c;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        .btn-ghost:hover {
+            background-color: #1a1a1c;
+            border-color: #2a2a2e;
+        }
+
+        /* Sağ tərəfdəki vizual qutu placeholder */
+        .hero-right {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero-image-placeholder {
+            width: 100%;
+            max-width: 450px;
+            height: 350px;
+            background: linear-gradient(135deg, #111113 0%, #1a1a1c 100%);
+            border: 1px solid #2a2a2e;
+            border-radius: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 80px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="logo">Kontakt<span>Home</span></a>
+        
+        <ul class="nav-links">
+            <li><a href="/" class="active">Ana Səhifə</a></li>
+            <li><a href="/mehsullar">Məhsullar</a></li>
+            <li><a href="/brendler">Brendlər</a></li>
+            <li><a href="/kampaniyalar">Kampaniyalar</a></li>
+            <li><a href="/magazalar">Mağazalar</a></li>
+            <li><a href="/kreditler">Kredit</a></li>
+        </ul>
+
+        <div class="nav-right">
+           
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-left">
+            <span class="hero-tag">🔥 Yay Endirimləri — 50%-ə qədər</span>
+            <h1>Ən Yaxşı <br><span>Elektronika</span><br> Bir Yerdə</h1>
+            <p>Samsung, Apple, LG, Sony və daha onlarla premium brendin orijinal məhsulları indi şok nağd endirimlərlə və ya sərfəli kredit şərtləri ilə Kontakt-da!</p>
+            <div class="hero-btns">
+                <a href="/mehsullar" class="btn-red">İndi Al →</a>
+                <a href="/kampaniyalar" class="btn-ghost">Kataloqa Bax</a>
+            </div>
+        </div>
+        
+        <div class="hero-right">
+            <div class="hero-image-placeholder">
+                📱
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

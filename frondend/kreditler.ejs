@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kredit Şərtləri — Kontakt Home</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0b0b0c;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- MENYU (NAVBAR) --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: #0b0b0c;
+            border-bottom: 1px solid #1a1a1c;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff0022;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links li a {
+            font-size: 15px;
+            font-weight: 500;
+            color: #b3b3b3;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover, .nav-links li.active a {
+            color: #ff0022;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .icon-btn:hover {
+            color: #ff0022;
+        }
+
+        .cart-btn {
+            background-color: #ff0022;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .cart-btn:hover {
+            background-color: #cc001b;
+            transform: translateY(-2px);
+        }
+
+        /* --- SƏHİFƏ BAŞLIĞI --- */
+        .page-header {
+            text-align: center;
+            padding: 60px 20px 40px 20px;
+            background: linear-gradient(180deg, #111113 0%, #0b0b0c 100%);
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .page-header span {
+            color: #ff0022;
+        }
+
+        .page-header p {
+            color: #88888b;
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- ƏSAS KONTEYNER --- */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 4% 80px 4%;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        /* --- KREDİT ŞƏRTLƏRİ GRID --- */
+        .conditions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .condition-card {
+            background-color: #111113;
+            border: 1px solid #1a1a1c;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .condition-card:hover {
+            border-color: #ff0022;
+            transform: translateY(-5px);
+        }
+
+        .condition-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .condition-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .condition-card p {
+            font-size: 14px;
+            color: #a0a0a5;
+            line-height: 1.6;
+        }
+
+        /* --- KALKULYATOR BÖLMƏSİ --- */
+        .calculator-section {
+            background-color: #111113;
+            border: 1px solid #1a1a1c;
+            border-radius: 24px;
+            padding: 40px;
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .calc-inputs {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .calc-block h3 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: #a0a0a5;
+        }
+
+        /* Range (Sürgülü input) Dizaynı */
+        .range-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .range-wrapper input[type="range"] {
+            flex: 1;
+            accent-color: #ff0022;
+            cursor: pointer;
+        }
+
+        .range-value {
+            background-color: #1a1a1c;
+            border: 1px solid #2a2a2e;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            min-width: 90px;
+            text-align: center;
+        }
+
+        /* Ay Düymələri */
+        .month-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .month-btn {
+            background-color: #1a1a1c;
+            border: 1px solid #2a2a2e;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .month-btn.active, .month-btn:hover {
+            background-color: #ff0022;
+            border-color: #ff0022;
+        }
+
+        /* Kalkulyator Nəticə Paneli */
+        .calc-result {
+            flex: 1;
+            min-width: 300px;
+            background: linear-gradient(135deg, #161619 0%, #0f0f11 100%);
+            border: 1px solid #2a2a2e;
+            border-radius: 16px;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .result-title {
+            font-size: 15px;
+            color: #a0a0a5;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .result-price {
+            font-size: 48px;
+            font-weight: 700;
+            color: #ff0022;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255, 0, 34, 0.3);
+        }
+
+        .result-details {
+            width: 100%;
+            border-top: 1px solid #2a2a2e;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #88888b;
+        }
+
+        .apply-btn {
+            margin-top: 30px;
+            width: 100%;
+            background-color: #ff0022;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .apply-btn:hover {
+            background-color: #cc001b;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #0b0b0c;
+            border-top: 1px solid #1a1a1c;
+            padding: 40px 8%;
+            text-align: center;
+            color: #555558;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="logo">Kontakt<span>Home</span></a>
+        <ul class="nav-links">
+            <li><a href="/">Ana Səhifə</a></li>
+            <li><a href="/mehsullar">Məhsullar</a></li>
+            <li><a href="/brendler">Brendlər</a></li>
+            <li><a href="/kampaniyalar">Kampaniyalar</a></li>
+            <li><a href="/magazalar">Mağazalar</a></li>
+            <li class="active"><a href="/kreditler">Kredit</a></li>
+        </ul>
+        <div class="nav-right">
+            <button class="icon-btn">🔍</button>
+            <button class="icon-btn">❤️</button>
+            <button class="cart-btn">Səbət (0)</button>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>Sərfəli <span>Kredit Şərtləri</span></h1>
+        <p>İstədiyiniz texnikanı gözləmədən, rəsmi iş yeri olmadan, sadəcə şəxsiyyət vəsiqəsi ilə hissə-hissə ödənişlə əldə edin.</p>
+    </div>
+
+    <div class="container">
+        
+        <div class="conditions-grid">
+            <div class="condition-card">
+                <span class="condition-icon">🪪</span>
+                <h3>Tək Vəsiqə ilə</h3>
+                <p>Kredit rəsmiləşdirilməsi üçün yalnız şəxsiyyət vəsiqəniz kifayətdir. Əlavə sənəd tələb olunmur.</p>
+            </div>
+            <div class="condition-card">
+                <span class="condition-icon">💰</span>
+                <h3>0 AZN İlkin Ödəniş</h3>
+                <p>Bir çox kampaniyalar çərçivəsində məhsulları 0% ilkin ödənişlə dərhal evinizə apara bilərsiniz.</p>
+            </div>
+            <div class="condition-card">
+                <span class="condition-icon">⏱️</span>
+                <h3>15 Dəqiqəyə Həlli</h3>
+                <p>Mağazalarımızda və ya onlayn müraciət zamanı kreditiniz cəmi 15 dəqiqə ərzində təsdiqlənir.</p>
+            </div>
+        </div>
+
+        <h2 style="font-size: 28px; font-weight: 600; text-align: center; margin-top: 20px;">Kreditinizi Hesablayın</h2>
+        
+        <div class="calculator-section">
+            
+            <div class="calc-inputs">
+                <div class="calc-block">
+                    <h3>Məhsulun qiyməti (AZN)</h3>
+                    <div class="range-wrapper">
+                        <input type="range" min="100" max="5000" step="50" value="1200" id="priceRange">
+                        <span class="range-value" id="priceValue">1200 AZN</span>
+                    </div>
+                </div>
+
+                <div class="calc-block">
+                    <h3>Kredit müddəti (Ay)</h3>
+                    <div class="month-buttons">
+                        <button class="month-btn">6</button>
+                        <button class="month-btn active">12</button>
+                        <button class="month-btn">18</button>
+                        <button class="month-btn">24</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calc-result">
+                <div class="result-title">Aylıq Ödəniş</div>
+                <div class="result-price">100.00 AZN</div>
+                
+                <div class="result-details">
+                    <span>İlkin ödəniş: 0 AZN</span>
+                    <span>Faiz dərəcəsi: 0%</span>
+                </div>
+                
+                <button class="apply-btn">Onlayn Müraciət Et</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Kontakt Home Tədris Layihəsi. Bütün hüquqlar qorunur.</p>
+    </footer>
+
+</body>
+</html>

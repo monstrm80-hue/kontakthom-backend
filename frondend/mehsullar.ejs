@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Məhsullar — Kontakt Home</title>
+    <style>
+        /* --- MODERN FONTLAR VƏ RESET --- */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0b0b0c;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- MENYU (NAVBAR) --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: #0b0b0c;
+            border-bottom: 1px solid #1a1a1c;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff0022;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links li a {
+            font-size: 15px;
+            font-weight: 500;
+            color: #b3b3b3;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover, .nav-links li.active a {
+            color: #ff0022;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .icon-btn:hover {
+            color: #ff0022;
+        }
+
+        .cart-btn {
+            background-color: #ff0022;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .cart-btn:hover {
+            background-color: #cc001b;
+            transform: translateY(-2px);
+        }
+
+        /* --- SƏHİFƏ BAŞLIĞI VƏ HERO --- */
+        .page-header {
+            text-align: center;
+            padding: 60px 20px 40px 20px;
+            background: linear-gradient(180deg, #111113 0%, #0b0b0c 100%);
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .page-header p {
+            color: #88888b;
+            font-size: 16px;
+            max-width: 60px0px;
+            margin: 0 auto;
+        }
+
+        /* --- ƏSAS MENDEJER STRUKTURU --- */
+        .container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 4% 80px 4%;
+            gap: 30px;
+        }
+
+        /* --- FİLTER BÖLMƏSİ --- */
+        .filter-sidebar {
+            flex: 1;
+            max-width: 300px;
+            background-color: #111113;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid #1a1a1c;
+            height: fit-content;
+        }
+
+        .filter-section {
+            margin-bottom: 30px;
+        }
+
+        .filter-section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #ffffff;
+            border-left: 3px solid #ff0022;
+            padding-left: 10px;
+        }
+
+        .category-list {
+            list-style: none;
+        }
+
+        .category-list li {
+            margin-bottom: 12px;
+        }
+
+        .category-list a {
+            color: #a0a0a5;
+            font-size: 14px;
+            transition: color 0.2s;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .category-list a:hover {
+            color: #ff0022;
+        }
+
+        .category-list span {
+            background-color: #1a1a1c;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            color: #666669;
+        }
+
+        /* Qiymət Aralığı inputları */
+        .price-inputs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .price-inputs input {
+            width: 100%;
+            background-color: #1a1a1c;
+            border: 1px solid #2a2a2e;
+            padding: 10px;
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .price-inputs input:focus {
+            outline: none;
+            border-color: #ff0022;
+        }
+
+        .filter-btn {
+            width: 100%;
+            background-color: transparent;
+            border: 1px solid #ff0022;
+            color: #ff0022;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover {
+            background-color: #ff0022;
+            color: white;
+        }
+
+        /* --- MƏHSULLAR GRID BÖLMƏSİ --- */
+        .products-section {
+            flex: 3;
+        }
+
+        .products-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            background-color: #111113;
+            padding: 15px 25px;
+            border-radius: 12px;
+            border: 1px solid #1a1a1c;
+        }
+
+        .products-count {
+            color: #88888b;
+            font-size: 14px;
+        }
+
+        .sort-select {
+            background-color: #1a1a1c;
+            color: white;
+            border: 1px solid #2a2a2e;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* --- MƏHSUL KARTI (PRODUCT CARD) --- */
+        .product-card {
+            background-color: #111113;
+            border: 1px solid #1a1a1c;
+            border-radius: 16px;
+            padding: 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: #3a3a3e;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: #ff0022;
+            color: white;
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .wishlist-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.05);
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .wishlist-btn:hover {
+            background: #ff0022;
+            color: white;
+        }
+
+        .product-image-wrapper {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            background-color: #161619;
+            border-radius: 12px;
+            padding: 10px;
+        }
+
+        /* Placeholder Şəkil Dizaynı */
+        .product-img-placeholder {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #2a2a2e 0%, #1a1a1c 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666669;
+            font-weight: 600;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .product-brand {
+            color: #666669;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .product-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #ffffff;
+            line-height: 1.4;
+            height: 44px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .rating {
+            display: flex;
+            gap: 2px;
+            color: #ffcc00;
+            font-size: 12px;
+        }
+
+        .price-container {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        .current-price {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .old-price {
+            font-size: 14px;
+            color: #555558;
+            text-decoration: line-through;
+        }
+
+        .credit-badge {
+            background-color: #1a1a1c;
+            border: 1px solid #2a2a2e;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            color: #ff0022;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .buy-btn {
+            width: 100%;
+            background-color: #ff0022;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .buy-btn:hover {
+            background-color: #cc001b;
+            transform: scale(1.02);
+        }
+
+        /* --- PAGINATION (SƏHİFƏLƏMƏ) --- */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 50px;
+        }
+
+        .page-num {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #111113;
+            border: 1px solid #1a1a1c;
+            border-radius: 50%;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .page-num.active, .page-num:hover {
+            background-color: #ff0022;
+            border-color: #ff0022;
+            color: white;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #0b0b0c;
+            border-top: 1px solid #1a1a1c;
+            padding: 40px 8%;
+            text-align: center;
+            color: #555558;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE DIZAYN */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+            .filter-sidebar {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="logo">Kontakt<span>Home</span></a>
+ <ul class="nav-links">
+    <li><a href="/">Ana Səhifə</a></li>
+    <li><a href="/mehsullar">Məhsullar</a></li>
+    <li><a href="/brendler">Brendlər</a></li>
+    <li><a href="/kampaniyalar">Kampaniyalar</a></li>
+     <li><a href="/magazalar">Mağazalar</a></li>
+    <li><a href="/kreditler">Kredit</a></li>
+</ul>
+        <div class="nav-right">
+            <button class="icon-btn">🔍</button>
+            <button class="icon-btn">❤️</button>
+            <button class="cart-btn">Səbət (0)</button>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>Bütün Məhsullar</h1>
+        <p>Ən son texnologiyalar, smartfonlar və məişət texnikası sərfəli şərtlərlə və rəsmi zəmanətlə yalnız Kontakt Home-da.</p>
+    </div>
+
+    <div class="container">
+        
+        <aside class="filter-sidebar">
+            <div class="filter-section">
+                <h3>Kateqoriyalar</h3>
+                <ul class="category-list">
+                    <li><a href="#">Smartfonlar <span>142</span></a></li>
+                    <li><a href="#">Noutbuklar <span>85</span></a></li>
+                    <li><a href="#">Televizorlar <span>64</span></a></li>
+                    <li><a href="#">Məişət Texnikası <span>210</span></a></li>
+                    <li><a href="#">Smart Saatlar <span>53</span></a></li>
+                    <li><a href="#">Aksesuarlar <span>412</span></a></li>
+                </ul>
+            </div>
+
+            <div class="filter-section">
+                <h3>Qiymət (AZN)</h3>
+                <div class="price-inputs">
+                    <input type="number" placeholder="Min" id="price-min">
+                    <input type="number" placeholder="Max" id="price-max">
+                </div>
+                <button class="filter-btn">Filtrlə</button>
+            </div>
+
+            <div class="filter-section">
+                <h3>Brend</h3>
+                <ul class="category-list">
+                    <li><a href="#">Apple <span>45</span></a></li>
+                    <li><a href="#">Samsung <span>82</span></a></li>
+                    <li><a href="#">Xiaomi <span>61</span></a></li>
+                    <li><a href="#">Asus <span>24</span></a></li>
+                    <li><a href="#">LG <span>33</span></a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="products-section">
+            
+            <div class="products-toolbar">
+                <div class="products-count">Toplam 6 məhsul göstərilir</div>
+                <select class="sort-select">
+                    <option>Sıralama: Ən yenilər</option>
+                    <option>Qiymət: Ucuzdan bahaya</option>
+                    <option>Qiymət: Bahadan ucuza</option>
+                    <option>Populyarlıq</option>
+                </select>
+            </div>
+
+            <div class="products-grid">
+                
+                <div class="product-card">
+                    <span class="badge">Yeni</span>
+                    <button class="wishlist-btn">♥</button>
+                    <div class="product-image-wrapper">
+                        <div class="product-img-placeholder">iPhone 15 Pro</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">Apple</span>
+                        <h2 class="product-title">iPhone 15 Pro 128 GB Natural Titanium</h2>
+                        <div class="rating">★★★★★</div>
+                        <div class="price-container">
+                            <span class="current-price">2499 AZN</span>
+                            <span class="old-price">2699 AZN</span>
+                        </div>
+                        <div class="credit-badge">Faizsiz 12 ay: 208.25 AZN</div>
+                        <button class="buy-btn">Səbətə at</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="badge" style="background-color: #ff9900;">Endirim</span>
+                    <button class="wishlist-btn">♥</button>
+                    <div class="product-image-wrapper">
+                        <div class="product-img-placeholder">Galaxy S24</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">Samsung</span>
+                        <h2 class="product-title">Samsung Galaxy S24 Ultra 512 GB Onyx Black</h2>
+                        <div class="rating">★★★★☆</div>
+                        <div class="price-container">
+                            <span class="current-price">2149 AZN</span>
+                            <span class="old-price">2399 AZN</span>
+                        </div>
+                        <div class="credit-badge">Faizsiz 18 ay: 119.38 AZN</div>
+                        <button class="buy-btn">Səbətə at</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <button class="wishlist-btn">♥</button>
+                    <div class="product-image-wrapper">
+                        <div class="product-img-placeholder">MacBook Air</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">Apple</span>
+                        <h2 class="product-title">MacBook Air 13 M3 / 8GB / 256GB Space Gray</h2>
+                        <div class="rating">★★★★★</div>
+                        <div class="price-container">
+                            <span class="current-price">2329 AZN</span>
+                        </div>
+                        <div class="credit-badge">Faizsiz 12 ay: 194.08 AZN</div>
+                        <button class="buy-btn">Səbətə at</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <button class="wishlist-btn">♥</button>
+                    <div class="product-image-wrapper">
+                        <div class="product-img-placeholder">Redmi Note 13</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">Xiaomi</span>
+                        <h2 class="product-title">Xiaomi Redmi Note 13 Pro 8/256 GB Midnight Black</h2>
+                        <div class="rating">★★★★☆</div>
+                        <div class="price-container">
+                            <span class="current-price">649 AZN</span>
+                            <span class="old-price">749 AZN</span>
+                        </div>
+                        <div class="credit-badge">Faizsiz 6 ay: 108.16 AZN</div>
+                        <button class="buy-btn">Səbətə at</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <button class="wishlist-btn">♥</button>
+                    <div class="product-image-wrapper">
+                        <div class="product-img-placeholder">ROG Zephyrus</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">Asus</span>
+                        <h2 class="product-title">Asus ROG Zephyrus G16 OLED Gaming Laptop</h2>
+                        <div class="rating">★★★★★</div>
+                        <div class="price-container">
+                            <span class="current-price">3899 AZN</span>
+                        </div>
+                        <div class="credit-badge">Faizsiz 12 ay: 324.91 AZN</div>
+                        <button class="buy-btn">Səbətə at</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="badge">Populyar</span>
+                    <button class="wishlist-btn">♥</button>
+                    <div class="product-image-wrapper">
+                        <div class="product-img-placeholder">LG OLED TV</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">LG</span>
+                        <h2 class="product-title">LG OLED Smart TV 55" 4K Ultra HD ThinQ AI</h2>
+                        <div class="rating">★★★★★</div>
+                        <div class="price-container">
+                            <span class="current-price">1899 AZN</span>
+                            <span class="old-price">2199 AZN</span>
+                        </div>
+                        <div class="credit-badge">Faizsiz 18 ay: 105.50 AZN</div>
+                        <button class="buy-btn">Səbətə at</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pagination">
+                <div class="page-num active">1</div>
+                <div class="page-num">2</div>
+                <div class="page-num">3</div>
+                <div class="page-num">»</div>
+            </div>
+
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Kontakt Home Tədris Layihəsi. Bütün hüquqlar qorunur.</p>
+    </footer>
+
+</body>
+</html>
